@@ -33,35 +33,14 @@ const Login = () => {
 
     signIn(email.value, pass.value)
       .then((result) => {
-        console.log(result);
-        // swal({
-        //   title: "Successfully login!",
-        //   text: `${result.user.displayName}, is now loged in!`,
-        //   icon: "success",
-        // });
-        // const user = { email: email.value };
-        // axios
-        //   .post("http://localhost:5001/jwt", user, { withCredentials: true })
-        //   .then((res) => {
-        //     console.log(res.data);
-        //     if (res.data.success) {
-        //       if (location.state) {
-        //         navigate(location.state);
-        //       } else {
-        //         navigate("/");
-        //       }
-        //       setErrorStatus("");
-        //       setSpinner(false);
-        //     }
-        //   })
-        //   .catch((err) => {
-        //     console.error(err);
-        //   });
-        // if (location.state) {
-        //     navigate(location.state);
-        //   } else {
-        //     navigate("/");
-        //   }
+        const user = result.user;
+        swal({
+          title: "Successfully login!",
+          text: `${user.displayName}, is now loged in!`,
+          icon: "success",
+        });
+        setErrorStatus("");
+        setSpinner(false);
       })
       .catch((err) => {
         swal({
