@@ -20,7 +20,7 @@ const Faq = () => {
         <h3 className="text-5xl font-bold">FAQ</h3>
         <p className="text-gray-600">People asked</p>
       </div>
-      <div className="md:w-1/2 w-full mx-auto">
+      <div className=" md:w-4/5 xl:w-1/2 w-full mx-auto p-2">
         <Accordion>{renderAccoridionv2}</Accordion>
       </div>
     </div>

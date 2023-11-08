@@ -8,13 +8,17 @@ const navLinks = [
       {
         _id: "nvdp1",
         navName: "create assignment",
-        path: "/create_assignment",
+        path: "/assignments/create_new",
       },
-      { _id: "nvdp2", navName: "my assignments", path: "/my_assignments" },
+      {
+        _id: "nvdp2",
+        navName: "my assignments",
+        path: "/assignments/my_assignments",
+      },
       {
         _id: "nvdp3",
         navName: "submitted assignments",
-        path: "/submitted_assignments",
+        path: "/assignments/submit",
       },
     ],
   },
@@ -56,4 +60,23 @@ const accordionData = {
   ],
 };
 
-export { accordionData, navLinks };
+const footerNavLinks = [
+  { _id: "ftnv1", navName: "all assignment", path: "/assignments" },
+  {
+    _id: "ftnv2",
+    navName: "create assignment",
+    path: "/assignments/create_new",
+  },
+  {
+    _id: "ftnv3",
+    navName: "my assignments",
+    path: "/assignments/my_assignments",
+  },
+  {
+    _id: "ftnv4",
+    navName: "submitted assignments",
+    path: "/assignments/submit",
+  },
+];
+
+export { accordionData, navLinks, footerNavLinks };
