@@ -9,7 +9,7 @@ const MainLayout = () => {
   const location = useLocation();
   const loading = useNavigation();
   return (
-    <div className="w-full min-h-screen overflow-x-hidden font-poppins">
+    <div className="w-full min-h-screen overflow-x-hidden font-poppins bg-gray-100">
       <div className="container w-full md:w-90 mx-auto m-1">
         <header>
           <Navbar />

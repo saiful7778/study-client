@@ -29,7 +29,7 @@ const Footer = () => {
       </div>
       <div className="p-4 bg-gray-200 text-center">
         © 2023 Study. All rights reserved by{" "}
-        <Link className="text-blue-600 underline" to="/">
+        <Link className="btn-link" to="/">
           Saiful Islam
         </Link>
       </div>
