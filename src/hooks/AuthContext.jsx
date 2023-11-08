@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import PropTypes from "prop-types";
 import { auth } from "../firebase";
+import axiosConfig from "../config/axios.config";
 
 export const AuthData = createContext(null);
 
@@ -35,6 +36,17 @@ const AuthContext = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setLoader(false);
       setUserData(currentUser);
+      if (currentUser) {
+        const loggedUser = { email: currentUser.email };
+        axiosConfig
+          .post("/jwtauth", loggedUser)
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
     });
     return () => {
       unSubscribe();
