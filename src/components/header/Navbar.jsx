@@ -5,6 +5,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { useId } from "react";
 import SiteLogo from "../SiteLogo";
 import { navLinks } from "../../assets/data/staticData";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
   const mobileMenuId = useId();
@@ -60,7 +61,7 @@ const Navbar = () => {
             </div>
           </nav>
         </div>
-        <div className="drawer-side">
+        <div className="drawer-side z-50">
           <label
             htmlFor={mobileMenuId}
             aria-label="close sidebar"
@@ -68,7 +69,7 @@ const Navbar = () => {
           ></label>
           <ul className="menu p-4 min-h-full bg-white">
             {renderMobileNavLink}
-            <li className="min-sm:hidden">
+            <li className="min-sm:hidden items-center">
               <UserAuthCom />
             </li>
           </ul>
@@ -78,7 +79,45 @@ const Navbar = () => {
   );
 };
 
+const shortUserName = (username) => {
+  if (username) {
+    return `${username[0]}${username[1]}`;
+  }
+};
+
 const UserAuthCom = () => {
+  const { userData } = useAuth();
+  return <>{userData ? <LoggedIn /> : <LoggedOut />}</>;
+};
+
+const LoggedIn = () => {
+  const { userData, logout } = useAuth();
+
+  return (
+    <>
+      <div className="avatar placeholder online">
+        <div className="w-8 h-8 rounded-full bg-white ring-2 ring-primary ring-offset-gray-100 ring-offset-2">
+          {userData?.photoURL ? (
+            <img src={userData?.photoURL} alt="user image" />
+          ) : (
+            <span className="text-xl font-semibold uppercase">
+              {shortUserName(userData.displayName)}
+            </span>
+          )}
+        </div>
+      </div>
+      <button
+        onClick={logout}
+        className="btn btn-sm btn-primary btn-outline"
+        type="button"
+      >
+        logout
+      </button>
+    </>
+  );
+};
+
+const LoggedOut = () => {
   return (
     <>
       <Link to="/login" className="btn btn-primary btn-sm my-1">

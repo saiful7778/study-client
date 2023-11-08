@@ -31,59 +31,98 @@ const Register = () => {
       setSpinner(false);
       return;
     }
-
-    UploadImage(userPic)
-      .then((res) => {
-        const userProfileLink = res?.data?.data?.image?.url;
-        if (userProfileLink) {
-          signUp(email, pass)
-            .then((result) => {
-              const user = result.user;
-              if (user) {
-                updateProfile(user, {
-                  displayName: fullName,
-                  photoURL: userProfileLink,
-                })
-                  .then(() => {
-                    swal({
-                      title: "Account created successfully!",
-                      text: `${user.displayName}, is now authorized!`,
-                      icon: "success",
-                    });
-                    setErrorStatus("");
-                    setSpinner(false);
+    if (userPic) {
+      UploadImage(userPic)
+        .then((res) => {
+          const userProfileLink = res?.data?.data?.image?.url;
+          if (userProfileLink) {
+            signUp(email, pass)
+              .then((result) => {
+                const user = result.user;
+                if (user) {
+                  updateProfile(user, {
+                    displayName: fullName,
+                    photoURL: userProfileLink,
                   })
-                  .catch((err) => {
-                    swal({
-                      title: err,
-                      icon: "error",
+                    .then(() => {
+                      swal({
+                        title: "Account created successfully!",
+                        text: `${user.displayName}, is now authorized!`,
+                        icon: "success",
+                      });
+                      setErrorStatus("");
+                      setSpinner(false);
+                    })
+                    .catch((err) => {
+                      swal({
+                        title: err,
+                        icon: "error",
+                      });
+                      console.log(err.message);
+                      setErrorStatus(err.code);
+                      setSpinner(false);
                     });
-                    console.log(err.message);
-                    setErrorStatus(err.code);
-                    setSpinner(false);
-                  });
-              }
-            })
-            .catch((err) => {
-              swal({
-                title: err.code,
-                icon: "error",
+                }
+              })
+              .catch((err) => {
+                swal({
+                  title: err.code,
+                  icon: "error",
+                });
+                console.log(err.message);
+                setErrorStatus(err.code);
+                setSpinner(false);
               });
-              console.log(err.message);
-              setErrorStatus(err.code);
-              setSpinner(false);
-            });
-        }
-      })
-      .catch((err) => {
-        swal({
-          title: err,
-          icon: "error",
+          }
+        })
+        .catch((err) => {
+          swal({
+            title: err,
+            icon: "error",
+          });
+          console.error(err);
+          setErrorStatus(err);
+          setSpinner(false);
         });
-        console.error(err);
-        setErrorStatus(err);
-        setSpinner(false);
-      });
+    } else {
+      signUp(email, pass)
+        .then((result) => {
+          const user = result.user;
+          if (user) {
+            updateProfile(user, {
+              displayName: fullName,
+            })
+              .then(() => {
+                swal({
+                  title: "Account created successfully!",
+                  text: `${user.displayName}, is now authorized!`,
+                  icon: "success",
+                });
+                form.reset();
+                setErrorStatus("");
+                setSpinner(false);
+              })
+              .catch((err) => {
+                swal({
+                  title: err,
+                  icon: "error",
+                });
+                console.log(err.message);
+                setErrorStatus(err.code);
+                setSpinner(false);
+              });
+          }
+        })
+        .catch((err) => {
+          swal({
+            title: err.code,
+            icon: "error",
+          });
+          console.log(err.message);
+          setErrorStatus(err.code);
+          setSpinner(false);
+        });
+    }
   };
   return (
     <div className="md:w-1/2 w-full mx-auto p-4 bg-white shadow-lg border border-gray-300 rounded-md">
