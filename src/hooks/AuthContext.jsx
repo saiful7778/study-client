@@ -9,13 +9,14 @@ import {
 } from "firebase/auth";
 import PropTypes from "prop-types";
 import { auth } from "../firebase";
-import axiosConfig from "../config/axios.config";
+import { useAxios } from "./useAxiosSecure";
 
 export const AuthData = createContext(null);
 
 const AuthContext = ({ children }) => {
   const [userData, setUserData] = useState(null);
   const [loader, setLoader] = useState(true);
+  const axiosSecure = useAxios();
   const googleAuth = () => {
     setLoader(true);
     const provider = new GoogleAuthProvider();
@@ -39,7 +40,7 @@ const AuthContext = ({ children }) => {
       setLoader(false);
       setUserData(currentUser);
       if (currentUser) {
-        axiosConfig
+        axiosSecure
           .post("/jwtauth", loggedUser)
           .then((res) => {
             console.log(res.data);
@@ -48,7 +49,7 @@ const AuthContext = ({ children }) => {
             console.error(err);
           });
       } else {
-        axiosConfig
+        axiosSecure
           .post("/jwtauth/logout", loggedUser)
           .then((res) => {
             console.log(res.data);

@@ -2,10 +2,12 @@ import { useState } from "react";
 import axiosConfig from "../../config/axios.config";
 import useAuth from "../../hooks/useAuth";
 import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
 
 const Create = () => {
   const { userData } = useAuth();
   const [spinner, setSpinner] = useState(false);
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -17,7 +19,14 @@ const Create = () => {
     const thumbnailUrl = form.thumbnailUrl.value;
     const level = form.level.value;
     const des = form.des.value;
-    const data = { title, mark, thumbnailUrl, level, des };
+    const data = {
+      title,
+      mark,
+      thumbnailUrl,
+      level,
+      des,
+      adminEmail: userData?.email,
+    };
     axiosConfig
       .post(`/assignment/new?email=${userData?.email}`, data)
       .then((res) => {
@@ -28,6 +37,7 @@ const Create = () => {
             icon: "success",
           });
           setSpinner(false);
+          navigate(`/assignments/${res.data.itemId}`);
         }
       })
       .catch((err) => {

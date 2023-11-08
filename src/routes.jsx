@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Assignments from "./pages/assignment/Assignments";
 import Create from "./pages/assignment/Create";
+import Preview from "./pages/assignment/Preview";
 
 const route = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const route = createBrowserRouter([
           {
             path: "create_new",
             element: <Create />,
+          },
+          {
+            path: ":assignmentID",
+            element: <Preview />,
           },
         ],
       },
