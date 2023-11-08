@@ -126,7 +126,7 @@ const Register = () => {
     }
   };
   return (
-    <div className="md:w-1/2 w-full mx-auto p-4 bg-white shadow-lg border border-gray-300 rounded-md">
+    <div className="md:w-1/2 w-full mx-auto px-4 py-10 bg-white shadow-lg border border-gray-300 rounded-md my-12">
       <h4 className="text-center text-3xl font-bold text-primary mb-4">
         Create your account
       </h4>

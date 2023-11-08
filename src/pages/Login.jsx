@@ -54,7 +54,7 @@ const Login = () => {
       });
   };
   return (
-    <div className="md:w-1/2 w-full mx-auto p-4 bg-white shadow-lg border border-gray-300 rounded-md">
+    <div className="md:w-1/2 w-full mx-auto px-4 py-12 bg-white shadow-lg border border-gray-300 rounded-md my-20">
       <h4 className="text-center text-3xl font-bold text-primary mb-4">
         Login your account
       </h4>
