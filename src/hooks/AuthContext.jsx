@@ -16,6 +16,7 @@ const AuthContext = ({ children }) => {
   const [userData, setUserData] = useState(null);
   const [loader, setLoader] = useState(true);
   const googleAuth = () => {
+    setLoader(true);
     const provider = new GoogleAuthProvider();
     return signInWithPopup(auth, provider);
   };
