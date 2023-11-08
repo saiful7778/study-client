@@ -1,3 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .dropdown-item {
+    @apply relative;
+  }
+  .dropdown-menu {
+    @apply absolute whitespace-nowrap right-0 top-full bg-white rounded-md shadow-lg overflow-hidden border border-gray-300 invisible opacity-0 duration-200;
+  }
+  .dropdown-menu li > * {
+    @apply py-1.5 px-2 inline-block w-full hover:bg-gray-300;
+  }
+  .dropdown-item:hover .dropdown-menu {
+    @apply visible opacity-100;
+  }
+}
