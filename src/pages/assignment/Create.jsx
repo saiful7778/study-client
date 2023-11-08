@@ -1,10 +1,14 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/display-name */
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { BsFillCalendarPlusFill } from "react-icons/bs";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { forwardRef } from "react";
 
 const Create = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -29,6 +33,7 @@ const Create = () => {
       thumbnailUrl,
       level,
       des,
+      dueData: startDate,
       adminEmail: userData?.email,
     };
     axiosSecure
@@ -58,7 +63,7 @@ const Create = () => {
       <h4 className="text-4xl font-bold text-primary text-center mb-4">
         Create new assignment
       </h4>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3 relative">
         <input
           type="text"
           placeholder="Title"
@@ -67,10 +72,14 @@ const Create = () => {
           required
         />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-          />
+          <div>
+            <DatePicker
+              showIcon
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              icon={<BsFillCalendarPlusFill className="mt-2 text-primary" />}
+            />
+          </div>
           <input
             type="number"
             placeholder="Total marks"

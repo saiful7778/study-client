@@ -50,6 +50,12 @@
     }
   }
 }
+.react-datepicker-wrapper {
+  @apply w-full;
+}
+.react-datepicker-wrapper input {
+  @apply w-full input input-bordered input-primary pl-8;
+}
 
 @layer components {
   .sitelogo {
