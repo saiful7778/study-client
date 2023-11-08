@@ -3,8 +3,11 @@ import useAuth from "../../hooks/useAuth";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const Create = () => {
+  const [startDate, setStartDate] = useState(new Date());
   const { userData } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [spinner, setSpinner] = useState(false);
@@ -56,13 +59,17 @@ const Create = () => {
         Create new assignment
       </h4>
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+        <input
+          type="text"
+          placeholder="Title"
+          name="title"
+          className="input input-bordered input-primary w-full"
+          required
+        />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <input
-            type="text"
-            placeholder="Title"
-            name="title"
-            className="input input-bordered input-primary w-full"
-            required
+          <DatePicker
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
           />
           <input
             type="number"

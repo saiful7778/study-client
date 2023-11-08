@@ -40,6 +40,7 @@ const Login = () => {
           icon: "success",
         });
         e.target.reset();
+        navigate(location.state ? location.state : "/");
         setErrorStatus("");
         setSpinner(false);
       })
@@ -111,7 +112,7 @@ const Login = () => {
           Register
         </Link>
       </p>
-      <AuthCom />
+      <AuthCom prevPage={location.state} />
     </div>
   );
 };
