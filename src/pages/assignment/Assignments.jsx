@@ -1,5 +1,3 @@
-import React from "react";
-
 const Assignments = () => {
   return <div>Assignments</div>;
 };
