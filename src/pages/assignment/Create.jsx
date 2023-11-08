@@ -1,11 +1,12 @@
 import { useState } from "react";
-import axiosConfig from "../../config/axios.config";
 import useAuth from "../../hooks/useAuth";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Create = () => {
   const { userData } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const [spinner, setSpinner] = useState(false);
   const navigate = useNavigate();
   const handleSubmit = (e) => {
@@ -27,7 +28,7 @@ const Create = () => {
       des,
       adminEmail: userData?.email,
     };
-    axiosConfig
+    axiosSecure
       .post(`/assignment/new?email=${userData?.email}`, data)
       .then((res) => {
         if (res.data.success) {
