@@ -6,7 +6,6 @@ import useInputValue from "../hooks/useInputValue";
 import useAuth from "../hooks/useAuth";
 import checkPass from "../utility/checkPass";
 import swal from "sweetalert";
-import axios from "axios";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);

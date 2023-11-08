@@ -93,12 +93,12 @@ const Register = () => {
               displayName: fullName,
             })
               .then(() => {
+                form.reset();
                 swal({
                   title: "Account created successfully!",
                   text: `${user.displayName}, is now authorized!`,
                   icon: "success",
                 });
-                form.reset();
                 setErrorStatus("");
                 setSpinner(false);
               })
