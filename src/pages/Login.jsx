@@ -86,6 +86,7 @@ const Login = () => {
           {...email}
           type="email"
           placeholder="Email address"
+          name="email"
           className="input input-primary input-bordered w-full"
           required
         />
