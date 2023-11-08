@@ -17,3 +17,12 @@
     @apply visible opacity-100;
   }
 }
+
+@layer components {
+  .sitelogo {
+    @apply text-3xl font-bold inline-flex items-center gap-1;
+  }
+  nav .sitelogo .logoText {
+    @apply max-sm:hidden max-min-sm:block;
+  }
+}
