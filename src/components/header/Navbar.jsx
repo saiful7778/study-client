@@ -17,7 +17,7 @@ const Navbar = () => {
       >
         {ele.navName}
         {ele?.hasDropDown && (
-          <div className="">
+          <div className="dropdown-arrow">
             <IoIosArrowUp />
           </div>
         )}

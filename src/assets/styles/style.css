@@ -16,6 +16,12 @@
   .dropdown-item:hover .dropdown-menu {
     @apply visible opacity-100;
   }
+  .dropdown-arrow {
+    @apply duration-300;
+  }
+  .dropdown-item:hover .dropdown-arrow {
+    @apply rotate-180;
+  }
 }
 
 @layer components {
