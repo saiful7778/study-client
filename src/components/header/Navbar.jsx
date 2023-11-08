@@ -66,15 +66,7 @@ const Navbar = () => {
                 {renderNavLinks}
               </ul>
               <div className="items-center gap-2 min-sm:flex hidden">
-                <button className="btn btn-primary btn-sm" type="button">
-                  login
-                </button>
-                <button
-                  className="btn btn-primary btn-outline btn-sm"
-                  type="button"
-                >
-                  register
-                </button>
+                <UserAuthCom />
               </div>
               <div className="md:hidden block">
                 <label
@@ -96,22 +88,25 @@ const Navbar = () => {
           ></label>
           <ul className="menu p-4 min-h-full bg-white">
             {renderMobileNavLink}
-            <li className="min-sm:hidden my-1">
-              <button className="btn btn-primary btn-sm" type="button">
-                login
-              </button>
-            </li>
-            <li className="min-sm:hidden my-1">
-              <button
-                className="btn btn-primary btn-outline btn-sm"
-                type="button"
-              >
-                register
-              </button>
+            <li className="min-sm:hidden">
+              <UserAuthCom />
             </li>
           </ul>
         </div>
       </div>
+    </>
+  );
+};
+
+const UserAuthCom = () => {
+  return (
+    <>
+      <Link to="/login" className="btn btn-primary btn-sm my-1">
+        login
+      </Link>
+      <Link to="/register" className="btn btn-primary btn-outline btn-sm my-1">
+        register
+      </Link>
     </>
   );
 };
@@ -130,7 +125,7 @@ const DropDown = ({ dropDownData }) => {
 };
 
 DropDown.propTypes = {
-  dropDownData: PropTypes.object,
+  dropDownData: PropTypes.array,
 };
 
 const MobileDropDown = ({ dropDownData }) => {
@@ -142,7 +137,7 @@ const MobileDropDown = ({ dropDownData }) => {
   return <ul>{renderMobileDropDown}</ul>;
 };
 MobileDropDown.propTypes = {
-  dropDownData: PropTypes.object,
+  dropDownData: PropTypes.array,
 };
 
 export default Navbar;
