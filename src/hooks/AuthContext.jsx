@@ -34,12 +34,22 @@ const AuthContext = ({ children }) => {
   };
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const userEmail = currentUser?.email || userData?.email;
+      const loggedUser = { email: userEmail };
       setLoader(false);
       setUserData(currentUser);
       if (currentUser) {
-        const loggedUser = { email: currentUser.email };
         axiosConfig
           .post("/jwtauth", loggedUser)
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      } else {
+        axiosConfig
+          .post("/jwtauth/logout", loggedUser)
           .then((res) => {
             console.log(res.data);
           })

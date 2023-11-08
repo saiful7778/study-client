@@ -6,6 +6,7 @@ import useInputValue from "../hooks/useInputValue";
 import useAuth from "../hooks/useAuth";
 import checkPass from "../utility/checkPass";
 import swal from "sweetalert";
+import AuthCom from "../components/AuthCom";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
@@ -38,6 +39,7 @@ const Login = () => {
           text: `${user.displayName}, is now loged in!`,
           icon: "success",
         });
+        e.target.reset();
         setErrorStatus("");
         setSpinner(false);
       })
@@ -109,6 +111,7 @@ const Login = () => {
           Register
         </Link>
       </p>
+      <AuthCom />
     </div>
   );
 };

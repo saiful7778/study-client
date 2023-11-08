@@ -6,6 +6,7 @@ import swal from "sweetalert";
 import checkPass from "../utility/checkPass";
 import { updateProfile } from "firebase/auth";
 import UploadImage from "../utility/uploadImg";
+import AuthCom from "../components/AuthCom";
 
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
@@ -190,6 +191,7 @@ const Register = () => {
           Login
         </Link>
       </p>
+      <AuthCom />
     </div>
   );
 };
