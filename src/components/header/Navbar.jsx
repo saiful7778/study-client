@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { IoIosArrowUp } from "react-icons/io";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useId } from "react";
+import SiteLogo from "../SiteLogo";
 
 const navLinks = [
   {
@@ -58,9 +59,9 @@ const Navbar = () => {
         <input id={mobileMenuId} type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
           <nav className="navbar">
-            <Link className="text-3xl font-bold flex-1" to="/">
-              <span className="text-blue-700">S</span>tudy
-            </Link>
+            <div className="flex-1">
+              <SiteLogo />
+            </div>
             <div className="flex items-center gap-2">
               <ul className="hidden md:flex items-center gap-2">
                 {renderNavLinks}
