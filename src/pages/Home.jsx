@@ -1,5 +1,11 @@
+import Feature from "./Feature";
+
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <>
+      <Feature />
+    </>
+  );
 };
 
 export default Home;

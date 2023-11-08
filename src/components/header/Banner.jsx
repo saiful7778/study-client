@@ -15,7 +15,7 @@ const Banner = () => {
         <h3 className="text-5xl lg:text-7xl font-bold">
           Study Hub<span className="text-red-500">!</span>
         </h3>
-        <p className="my-3 max-w-lg text-sm text-gray-600">
+        <p className="my-3 max-lg:mx-auto max-w-lg text-sm text-gray-600">
           Unlock the power of collaborative learning! Join 'study' and connect
           with students to study smarter, work on assignments, and excel
           together.
