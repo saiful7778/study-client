@@ -4,28 +4,7 @@ import { IoIosArrowUp } from "react-icons/io";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useId } from "react";
 import SiteLogo from "../SiteLogo";
-
-const navLinks = [
-  {
-    _id: "nv1",
-    navName: "assignments",
-    path: "/assignments",
-    hasDropDown: true,
-    dropDown: [
-      {
-        _id: "nvdp1",
-        navName: "create assignment",
-        path: "/create_assignment",
-      },
-      { _id: "nvdp2", navName: "my assignments", path: "/my_assignments" },
-      {
-        _id: "nvdp3",
-        navName: "submitted assignments",
-        path: "/submitted_assignments",
-      },
-    ],
-  },
-];
+import { navLinks } from "../../assets/data/staticData";
 
 const Navbar = () => {
   const mobileMenuId = useId();
