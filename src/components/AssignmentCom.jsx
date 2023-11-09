@@ -48,20 +48,12 @@ const AssignmentCom = ({ itemData }) => {
           </div>
         </div>
         <div className="flex gap-1 mt-3 w-full">
-          <Link
-            to={`/assignments/${_id}`}
-            className="btn btn-primary"
-            type="button"
-          >
+          <Link to={`/assignments/${_id}`} className="btn btn-primary">
             view details
           </Link>
-          <Link
-            to={`/assignments/submit`}
-            className="btn btn-primary btn-outline"
-            type="button"
-          >
+          <button className="btn btn-primary btn-outline" type="button">
             submit
-          </Link>
+          </button>
         </div>
       </div>
     </div>
