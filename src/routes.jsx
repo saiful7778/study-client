@@ -8,6 +8,7 @@ import Create from "./pages/assignment/Create";
 import Preview from "./pages/assignment/Preview";
 import PrivateRoute from "./pages/PrivateRoute";
 import Own from "./pages/assignment/Own";
+import axiosConfig from "./config/axios.config";
 
 const route = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const route = createBrowserRouter([
         children: [
           {
             index: true,
+            loader: () => axiosConfig.get("/assignments"),
             element: <Assignments />,
           },
           {

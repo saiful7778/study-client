@@ -3,6 +3,7 @@ import { BsTrash } from "react-icons/bs";
 import { useAxios } from "../hooks/useAxiosSecure";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
+import convertDate from "../utility/convertDate";
 
 const AssignmentItem = ({ itemData, setStateData }) => {
   const { userData } = useAuth();
@@ -101,11 +102,6 @@ const AssignmentItem = ({ itemData, setStateData }) => {
 AssignmentItem.propTypes = {
   itemData: PropTypes.object,
   setStateData: PropTypes.func,
-};
-
-const convertDate = (inputDate) => {
-  const date = new Date(inputDate);
-  return date.toLocaleDateString();
 };
 
 export default AssignmentItem;
