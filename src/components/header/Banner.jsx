@@ -23,7 +23,10 @@ const Banner = () => {
         <Link className="btn btn-sm btn-primary m-1" to="/register">
           register now
         </Link>
-        <Link className="btn btn-sm btn-outline btn-primary m-1" to="/register">
+        <Link
+          className="btn btn-sm btn-outline btn-primary m-1"
+          to="/assignments"
+        >
           take an assignment
         </Link>
       </div>

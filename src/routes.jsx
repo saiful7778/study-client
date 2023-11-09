@@ -10,11 +10,13 @@ import PrivateRoute from "./pages/PrivateRoute";
 import Own from "./pages/assignment/Own";
 import axiosConfig from "./config/axios.config";
 import Update from "./pages/assignment/Update";
+import ErrorPage from "./pages/ErrorPage";
 
 const route = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
