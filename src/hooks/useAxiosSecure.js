@@ -6,22 +6,22 @@ import { useNavigate } from "react-router-dom";
 const useAxiosSecure = () => {
   const { logout } = useAuth();
   const navigate = useNavigate();
-  useEffect(() => {
-    axiosConfig.interceptors.response.use(
-      (res) => {
-        return res;
-      },
-      (err) => {
-        if (err.response.status === 401 || err.response.status === 403) {
-          logout()
-            .then(() => {
-              navigate("/login");
-            })
-            .catch((err) => console.error(err));
-        }
-      }
-    );
-  }, []);
+  // useEffect(() => {
+  //   axiosConfig.interceptors.response.use(
+  //     (res) => {
+  //       return res;
+  //     },
+  //     (err) => {
+  //       if (err.response.status === 401 || err.response.status === 403) {
+  //         logout()
+  //           .then(() => {
+  //             navigate("/login");
+  //           })
+  //           .catch((err) => console.error(err));
+  //       }
+  //     }
+  //   );
+  // }, []);
   return axiosConfig;
 };
 

@@ -7,6 +7,7 @@ import Assignments from "./pages/assignment/Assignments";
 import Create from "./pages/assignment/Create";
 import Preview from "./pages/assignment/Preview";
 import PrivateRoute from "./pages/PrivateRoute";
+import Own from "./pages/assignment/Own";
 
 const route = createBrowserRouter([
   {
@@ -37,6 +38,14 @@ const route = createBrowserRouter([
             element: (
               <PrivateRoute>
                 <Preview />
+              </PrivateRoute>
+            ),
+          },
+          {
+            path: "my_assignments",
+            element: (
+              <PrivateRoute>
+                <Own />
               </PrivateRoute>
             ),
           },

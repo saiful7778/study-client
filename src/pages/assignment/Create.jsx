@@ -8,7 +8,6 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { BsFillCalendarPlusFill } from "react-icons/bs";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { forwardRef } from "react";
 
 const Create = () => {
   const [startDate, setStartDate] = useState(new Date());
