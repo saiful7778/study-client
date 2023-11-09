@@ -9,6 +9,7 @@ import Preview from "./pages/assignment/Preview";
 import PrivateRoute from "./pages/PrivateRoute";
 import Own from "./pages/assignment/Own";
 import axiosConfig from "./config/axios.config";
+import Update from "./pages/assignment/Update";
 
 const route = createBrowserRouter([
   {
@@ -48,6 +49,14 @@ const route = createBrowserRouter([
             element: (
               <PrivateRoute>
                 <Own />
+              </PrivateRoute>
+            ),
+          },
+          {
+            path: "update/:assignmentID",
+            element: (
+              <PrivateRoute>
+                <Update />
               </PrivateRoute>
             ),
           },

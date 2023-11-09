@@ -8,7 +8,7 @@
     @apply relative;
   }
   .dropdown-menu {
-    @apply absolute whitespace-nowrap right-0 top-full bg-white rounded-md shadow-lg overflow-hidden border border-gray-300 invisible opacity-0 duration-200;
+    @apply absolute whitespace-nowrap z-50 right-0 top-full bg-white rounded-md shadow-lg overflow-hidden border border-gray-300 invisible opacity-0 duration-200;
   }
   .dropdown-menu li > * {
     @apply py-1.5 px-2 inline-block w-full hover:bg-gray-300;

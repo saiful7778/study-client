@@ -5,7 +5,7 @@ import { useAxios } from "../../hooks/useAxiosSecure";
 import convertDate from "../../utility/convertDate";
 
 const Preview = () => {
-  const { userData, logout } = useAuth();
+  const { userData } = useAuth();
   const { assignmentID } = useParams();
   const axiosSecure = useAxios();
   const [errorStatus, setErrorStatus] = useState("");
@@ -20,7 +20,7 @@ const Preview = () => {
           console.error(err);
         });
     }
-  }, [userData, assignmentID, axiosSecure, logout]);
+  }, [userData, assignmentID, axiosSecure]);
 
   if (errorStatus) {
     return (
@@ -60,7 +60,7 @@ const Preview = () => {
             submit
           </button>
         </div>
-        <div>
+        <div className="md:w-1/2 w-full">
           <h2 className="capitalize text-2xl font-semibold">{title}</h2>
           <div className="text-sm text-gray-600 font-medium leading-5">
             <div>

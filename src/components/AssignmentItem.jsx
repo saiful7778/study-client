@@ -1,14 +1,15 @@
 import PropTypes from "prop-types";
 import { BsTrash } from "react-icons/bs";
+import { FiEdit } from "react-icons/fi";
 import { useAxios } from "../hooks/useAxiosSecure";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 import convertDate from "../utility/convertDate";
+import { Link } from "react-router-dom";
 
 const AssignmentItem = ({ itemData, setStateData }) => {
   const { userData } = useAuth();
-  const { _id, title, thumbnailUrl, des, level, mark, dueData } =
-    itemData || {};
+  const { _id, title, thumbnailUrl, level, mark, dueData } = itemData || {};
   const axiosSecure = useAxios();
 
   const handleDelete = () => {
@@ -62,7 +63,7 @@ const AssignmentItem = ({ itemData, setStateData }) => {
 
   return (
     <div className="relative flex flex-col md:flex-row max-md:items-center gap-3 overflow-hidden w-full border border-primary rounded-lg bg-white shadow-md">
-      <figure className="md:w-2/5 h-36">
+      <figure className="md:w-2/5 h-44">
         <img
           className="w-full h-full object-cover object-center"
           src={thumbnailUrl}
@@ -70,8 +71,7 @@ const AssignmentItem = ({ itemData, setStateData }) => {
         />
       </figure>
       <div className="flex-1">
-        <h5>{title}</h5>
-        <p>{des}</p>
+        <h5 className="text-xl font-semibold">{title}</h5>
         <div className="text-sm text-gray-600 font-medium leading-5">
           <div>
             Difficulty label:{" "}
@@ -85,8 +85,22 @@ const AssignmentItem = ({ itemData, setStateData }) => {
             <span className="capitalize font-bold">{convertDate(dueData)}</span>
           </div>
         </div>
+        <Link
+          to={`/assignments/${_id}`}
+          className="btn btn-sm btn-primary mt-2"
+          type="button"
+        >
+          view details
+        </Link>
       </div>
-      <div className="absolute right-2 top-1/2 -translate-y-1/2">
+      <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col gap-2">
+        <Link
+          to={`/assignments/update/${_id}`}
+          className="btn btn-sm btn-primary btn-square"
+          type="button"
+        >
+          <FiEdit size={20} />
+        </Link>
         <button
           onClick={handleDelete}
           className="btn btn-sm btn-error btn-square text-white"
