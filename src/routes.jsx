@@ -11,6 +11,7 @@ import Own from "./pages/assignment/Own";
 import axiosConfig from "./config/axios.config";
 import Update from "./pages/assignment/Update";
 import ErrorPage from "./pages/ErrorPage";
+import Submit from "./pages/assignment/Submit";
 
 const route = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ const route = createBrowserRouter([
                 <Update />
               </PrivateRoute>
             ),
+          },
+          {
+            path: "submit",
+            element: <Submit />,
           },
         ],
       },

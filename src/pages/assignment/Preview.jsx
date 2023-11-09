@@ -43,15 +43,18 @@ const Preview = () => {
               src={thumbnailUrl}
               alt="thumbnail"
             />
-            {profile && (
-              <div className="absolute top-0 right-0 z-20">
+            <div className="absolute top-0 right-0 z-20 flex items-center">
+              <span className="bg-white rounded-sm px-1 text-sm font-medium shadow">
+                {name}
+              </span>
+              {profile && (
                 <img
                   className="w-10 h-10 rounded-full m-2 ring-2 ring-primary ring-offset-2 object-cover object-center"
                   src={profile}
                   alt="admin profile"
                 />
-              </div>
-            )}
+              )}
+            </div>
           </figure>
           <button
             className="btn btn-primary btn-outline btn-block mt-4"

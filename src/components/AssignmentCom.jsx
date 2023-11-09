@@ -17,15 +17,18 @@ const AssignmentCom = ({ itemData }) => {
             alt={`${title} image`}
           />
         </figure>
-        {profile && (
-          <div className="absolute top-0 left-0 z-20">
+        <div className="absolute bottom-0 right-0 z-20 flex items-center">
+          <span className="bg-white rounded-sm px-1 text-sm font-medium shadow">
+            {name}
+          </span>
+          {profile && (
             <img
-              className="w-10 h-10 rounded-full m-2 ring-2 ring-primary ring-offset-2 object-cover object-center"
+              className="w-8 h-8 rounded-full m-2 ring-2 ring-primary ring-offset-2 object-cover object-center"
               src={profile}
               alt="admin profile"
             />
-          </div>
-        )}
+          )}
+        </div>
       </div>
       <div className="p-4">
         <h5 className="capitalize text-2xl font-semibold border-dashed border-b border-gray-400 mb-2 pb-2">
@@ -43,9 +46,6 @@ const AssignmentCom = ({ itemData }) => {
             Due Data:{" "}
             <span className="capitalize font-bold">{convertDate(dueData)}</span>
           </div>
-          <div>
-            Admin: <span className="font-bold">{name}</span>
-          </div>
         </div>
         <div className="flex gap-1 mt-3 w-full">
           <Link
@@ -55,9 +55,13 @@ const AssignmentCom = ({ itemData }) => {
           >
             view details
           </Link>
-          <button className="btn btn-primary btn-outline" type="button">
+          <Link
+            to={`/assignments/submit`}
+            className="btn btn-primary btn-outline"
+            type="button"
+          >
             submit
-          </button>
+          </Link>
         </div>
       </div>
     </div>
