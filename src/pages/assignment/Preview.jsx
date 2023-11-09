@@ -39,11 +39,11 @@ const Preview = () => {
         <div className="md:w-1/2 w-full">
           <figure className="relative">
             <img
-              className="object-cover object-center"
+              className="object-cover object-center shadow-md rounded"
               src={thumbnailUrl}
               alt="thumbnail"
             />
-            <div className="absolute top-0 right-0 z-20 flex items-center">
+            <div className="absolute top-0 right-0 z-20 flex items-center m-2">
               <span className="bg-white rounded-sm px-1 text-sm font-medium shadow">
                 {name}
               </span>

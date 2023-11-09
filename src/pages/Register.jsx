@@ -32,6 +32,7 @@ const Register = () => {
       setSpinner(false);
       return;
     }
+
     if (userPic) {
       UploadImage(userPic)
         .then((res) => {

@@ -64,7 +64,7 @@ const AssignmentItem = ({ itemData, setStateData }) => {
   };
 
   return (
-    <div className="relative flex flex-col md:flex-row max-md:items-center gap-3 overflow-hidden w-full border border-primary rounded-lg bg-white shadow-md">
+    <div className="flex flex-col md:flex-row max-md:items-center gap-3 overflow-hidden w-full border border-primary rounded-lg bg-white shadow-md">
       <figure className="md:w-2/5 h-44">
         <img
           className="w-full h-full object-cover object-center"
@@ -72,7 +72,7 @@ const AssignmentItem = ({ itemData, setStateData }) => {
           alt={`${title} image`}
         />
       </figure>
-      <div className="flex-1">
+      <div className="flex-1 w-full p-2 relative">
         <h5 className="text-xl font-semibold">{title}</h5>
         <div className="text-sm text-gray-600 font-medium leading-5">
           <div>
@@ -94,22 +94,22 @@ const AssignmentItem = ({ itemData, setStateData }) => {
         >
           view details
         </Link>
-      </div>
-      <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col gap-2">
-        <Link
-          to={`/assignments/update/${_id}`}
-          className="btn btn-sm btn-primary btn-square"
-          type="button"
-        >
-          <FiEdit size={20} />
-        </Link>
-        <button
-          onClick={handleDelete}
-          className="btn btn-sm btn-error btn-square text-white"
-          type="button"
-        >
-          <BsTrash size={20} />
-        </button>
+        <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col gap-2">
+          <Link
+            to={`/assignments/update/${_id}`}
+            className="btn btn-sm btn-primary btn-square"
+            type="button"
+          >
+            <FiEdit size={20} />
+          </Link>
+          <button
+            onClick={handleDelete}
+            className="btn btn-sm btn-error btn-square text-white"
+            type="button"
+          >
+            <BsTrash size={20} />
+          </button>
+        </div>
       </div>
     </div>
   );

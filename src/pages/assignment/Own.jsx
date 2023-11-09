@@ -34,7 +34,9 @@ const Own = () => {
   return (
     <>
       {serverData?.length ? (
-        <div className="grid grid-cols-2 gap-4">{renderOwnItem}</div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          {renderOwnItem}
+        </div>
       ) : (
         <div className="text-center text-xl text-red-600 font-semibold my-10">
           No data found!

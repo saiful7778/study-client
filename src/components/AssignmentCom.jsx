@@ -10,14 +10,14 @@ const AssignmentCom = ({ itemData }) => {
   return (
     <div className="flex flex-col overflow-hidden w-full border border-primary rounded-lg bg-white shadow-md">
       <div className="relative">
-        <figure className="w-full h-72">
+        <figure className="w-full h-52 md:h-72">
           <img
             className="w-full h-full object-cover object-center"
             src={thumbnailUrl}
             alt={`${title} image`}
           />
         </figure>
-        <div className="absolute bottom-0 right-0 z-20 flex items-center">
+        <div className="absolute bottom-0 right-0 z-20 flex items-center m-2">
           <span className="bg-white rounded-sm px-1 text-sm font-medium shadow">
             {name}
           </span>

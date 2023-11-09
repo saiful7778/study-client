@@ -10,7 +10,7 @@ const MainLayout = () => {
   const loading = useNavigation();
   return (
     <div className="w-full min-h-screen overflow-x-hidden font-poppins bg-gray-100">
-      <div className="container w-full md:w-90 mx-auto m-1">
+      <div className="container w-full md:w-90 mx-auto m-1 p-2">
         <header>
           <Navbar />
           {location.pathname === "/" ? <Banner /> : ""}
