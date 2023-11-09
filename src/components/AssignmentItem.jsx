@@ -3,9 +3,9 @@ import { BsTrash } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 import { useAxios } from "../hooks/useAxiosSecure";
 import useAuth from "../hooks/useAuth";
-import Swal from "sweetalert2";
 import convertDate from "../utility/convertDate";
 import { Link } from "react-router-dom";
+import sweetAlert from "../config/SweetAlart.config";
 
 const AssignmentItem = ({ itemData, setStateData }) => {
   const { userData } = useAuth();
@@ -13,52 +13,54 @@ const AssignmentItem = ({ itemData, setStateData }) => {
   const axiosSecure = useAxios();
 
   const handleDelete = () => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: "Loading....",
-          didOpen: () => {
-            Swal.showLoading();
-          },
-          showConfirmButton: false,
-        });
-        axiosSecure
-          .delete(`/assignment/delete/${_id}?email=${userData?.email}`)
-          .then((res) => {
-            if (res.data.deletedCount) {
-              setStateData();
-              Swal.fire({
-                title: "Assignment has been deleted!",
-                icon: "success",
-              });
-            } else {
-              Swal.fire({
-                title: "Assignment has not been deleted!",
-                icon: "warning",
-              });
-            }
-          })
-          .catch((err) => {
-            Swal.fire({
-              title: err,
-              icon: "error",
-            });
-            console.error(err);
+    sweetAlert
+      .fire({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          sweetAlert.fire({
+            title: "Loading....",
+            didOpen: () => {
+              sweetAlert.showLoading();
+            },
+            showConfirmButton: false,
           });
-      } else {
-        Swal.fire({
-          text: "Assignment is safe now",
-          showConfirmButton: false,
-          icon: "info",
-        });
-      }
-    });
+          axiosSecure
+            .delete(`/assignment/delete/${_id}?email=${userData?.email}`)
+            .then((res) => {
+              if (res.data.deletedCount) {
+                setStateData();
+                sweetAlert.fire({
+                  title: "Assignment has been deleted!",
+                  icon: "success",
+                });
+              } else {
+                sweetAlert.fire({
+                  title: "Assignment has not been deleted!",
+                  icon: "warning",
+                });
+              }
+            })
+            .catch((err) => {
+              sweetAlert.fire({
+                title: err,
+                icon: "error",
+              });
+              console.error(err);
+            });
+        } else {
+          sweetAlert.fire({
+            text: "Assignment is safe now",
+            showConfirmButton: false,
+            icon: "info",
+          });
+        }
+      });
   };
 
   return (

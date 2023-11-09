@@ -7,9 +7,17 @@ const Assignments = () => {
     <AssignmentCom itemData={ele} key={ele._id} />
   ));
   return (
-    <div>
-      <div className="grid grid-cols-1 gap-3 md:grid-cols-3">{renderData}</div>
-    </div>
+    <>
+      {loaderData?.data?.length > 0 ? (
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+          {renderData}
+        </div>
+      ) : (
+        <div className="text-center text-xl text-red-600 font-semibold my-10">
+          No data found!
+        </div>
+      )}
+    </>
   );
 };
 

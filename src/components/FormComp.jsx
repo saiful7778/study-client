@@ -5,9 +5,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import { useAxios } from "../hooks/useAxiosSecure";
 import { useEffect } from "react";
-import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import sweetAlert from "../config/SweetAlart.config";
 
 const FormComp = ({ defData }) => {
   const navigate = useNavigate();
@@ -44,19 +44,21 @@ const FormComp = ({ defData }) => {
       .patch(`/assignment/update/${_id}?email=${userData?.email}`, data)
       .then((res) => {
         if (res.data.modifiedCount) {
-          Swal.fire({
-            title: "Assignment is updated!",
-            icon: "success",
-            showCancelButton: true,
-            confirmButtonText: "View details",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              navigate(`/assignments/${_id}`);
-            }
-          });
+          sweetAlert
+            .fire({
+              title: "Assignment is updated!",
+              icon: "success",
+              showCancelButton: true,
+              confirmButtonText: "View details",
+            })
+            .then((result) => {
+              if (result.isConfirmed) {
+                navigate(`/assignments/${_id}`);
+              }
+            });
           setSpinner(false);
         } else {
-          Swal.fire({
+          sweetAlert.fire({
             title: "Error",
             icon: "error",
           });
@@ -64,7 +66,7 @@ const FormComp = ({ defData }) => {
         }
       })
       .catch((err) => {
-        Swal.fire({
+        sweetAlert.fire({
           text: err,
           icon: "error",
         });
@@ -123,7 +125,7 @@ const FormComp = ({ defData }) => {
           </select>
         </div>
         <textarea
-          className="textarea textarea-primary"
+          className="textarea textarea-primary h-48"
           placeholder="Description"
           name="des"
           defaultValue={des}

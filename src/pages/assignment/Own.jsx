@@ -32,9 +32,15 @@ const Own = () => {
     />
   ));
   return (
-    <div className="grid grid-cols-2 gap-4">
-      {serverData?.length ? <>{renderOwnItem}</> : <p>no data found</p>}
-    </div>
+    <>
+      {serverData?.length ? (
+        <div className="grid grid-cols-2 gap-4">{renderOwnItem}</div>
+      ) : (
+        <div className="text-center text-xl text-red-600 font-semibold my-10">
+          No data found!
+        </div>
+      )}
+    </>
   );
 };
 

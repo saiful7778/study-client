@@ -5,8 +5,8 @@ import { useState } from "react";
 import useInputValue from "../hooks/useInputValue";
 import useAuth from "../hooks/useAuth";
 import checkPass from "../utility/checkPass";
-import swal from "sweetalert";
 import AuthCom from "../components/AuthCom";
+import sweetAlert from "../config/SweetAlart.config";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
@@ -34,7 +34,7 @@ const Login = () => {
     signIn(email.value, pass.value)
       .then((result) => {
         const user = result.user;
-        swal({
+        sweetAlert.fire({
           title: "Successfully login!",
           text: `${user.displayName}, is now loged in!`,
           icon: "success",
@@ -45,7 +45,7 @@ const Login = () => {
         setSpinner(false);
       })
       .catch((err) => {
-        swal({
+        sweetAlert.fire({
           title: err.code,
           icon: "error",
         });

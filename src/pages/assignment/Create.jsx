@@ -2,12 +2,12 @@
 /* eslint-disable react/display-name */
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
-import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { BsFillCalendarPlusFill } from "react-icons/bs";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import sweetAlert from "../../config/SweetAlart.config";
 
 const Create = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -44,16 +44,29 @@ const Create = () => {
       .then((res) => {
         if (res.data.success) {
           form.reset();
-          swal({
-            title: "Assignment created",
-            icon: "success",
+          sweetAlert
+            .fire({
+              title: "Assignment created",
+              icon: "success",
+              showCancelButton: true,
+              confirmButtonText: "View details",
+            })
+            .then((result) => {
+              if (result.isConfirmed) {
+                navigate(`/assignments/${res.data.itemId}`);
+              }
+            });
+          setSpinner(false);
+        } else {
+          sweetAlert.fire({
+            title: "Error",
+            icon: "error",
           });
           setSpinner(false);
-          navigate(`/assignments/${res.data.itemId}`);
         }
       })
       .catch((err) => {
-        swal({
+        sweetAlert.fire({
           title: err,
           icon: "error",
         });
@@ -109,7 +122,7 @@ const Create = () => {
           </select>
         </div>
         <textarea
-          className="textarea textarea-primary"
+          className="textarea textarea-primary h-48"
           placeholder="Description"
           name="des"
           required

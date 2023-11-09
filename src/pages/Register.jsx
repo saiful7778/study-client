@@ -2,11 +2,11 @@ import { useState } from "react";
 import useAuth from "../hooks/useAuth";
 import { Link } from "react-router-dom";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
-import swal from "sweetalert";
 import checkPass from "../utility/checkPass";
 import { updateProfile } from "firebase/auth";
 import UploadImage from "../utility/uploadImg";
 import AuthCom from "../components/AuthCom";
+import sweetAlert from "../config/SweetAlart.config";
 
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
@@ -46,7 +46,7 @@ const Register = () => {
                     photoURL: userProfileLink,
                   })
                     .then(() => {
-                      swal({
+                      sweetAlert.fire({
                         title: "Account created successfully!",
                         text: `${user.displayName}, is now authorized!`,
                         icon: "success",
@@ -55,7 +55,7 @@ const Register = () => {
                       setSpinner(false);
                     })
                     .catch((err) => {
-                      swal({
+                      sweetAlert.fire({
                         title: err,
                         icon: "error",
                       });
@@ -66,7 +66,7 @@ const Register = () => {
                 }
               })
               .catch((err) => {
-                swal({
+                sweetAlert.fire({
                   title: err.code,
                   icon: "error",
                 });
@@ -77,7 +77,7 @@ const Register = () => {
           }
         })
         .catch((err) => {
-          swal({
+          sweetAlert.fire({
             title: err,
             icon: "error",
           });
@@ -95,7 +95,7 @@ const Register = () => {
             })
               .then(() => {
                 form.reset();
-                swal({
+                sweetAlert.fire({
                   title: "Account created successfully!",
                   text: `${user.displayName}, is now authorized!`,
                   icon: "success",
@@ -104,7 +104,7 @@ const Register = () => {
                 setSpinner(false);
               })
               .catch((err) => {
-                swal({
+                sweetAlert.fire({
                   title: err,
                   icon: "error",
                 });
@@ -115,7 +115,7 @@ const Register = () => {
           }
         })
         .catch((err) => {
-          swal({
+          sweetAlert.fire({
             title: err.code,
             icon: "error",
           });

@@ -1,6 +1,11 @@
 const navLinks = [
   {
     _id: "nv1",
+    navName: "home",
+    path: "/",
+  },
+  {
+    _id: "nv2",
     navName: "assignments",
     path: "/assignments",
     hasDropDown: true,

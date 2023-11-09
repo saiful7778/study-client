@@ -3,7 +3,7 @@ import Navbar from "../components/header/Navbar";
 import Banner from "../components/header/Banner";
 import Footer from "../components/Footer";
 import { useLocation, useNavigation } from "react-router-dom";
-import spinner from "../assets/img/Animation - 1699411161636.gif";
+import Loader from "../components/Loader";
 
 const MainLayout = () => {
   const location = useLocation();
@@ -15,13 +15,7 @@ const MainLayout = () => {
           <Navbar />
           {location.pathname === "/" ? <Banner /> : ""}
         </header>
-        <main>
-          {loading.state === "loading" ? (
-            <img className="w-20" src={spinner} alt="loading spinner" />
-          ) : (
-            <Outlet />
-          )}
-        </main>
+        <main>{loading.state === "loading" ? <Loader /> : <Outlet />}</main>
       </div>
       <Footer />
     </div>
