@@ -28,7 +28,7 @@ const AssignmentItem = ({ itemData, setStateData }) => {
           showConfirmButton: false,
         });
         axiosSecure
-          .delete(`/assignment/${_id}?email=${userData?.email}`)
+          .delete(`/assignment/delete/${_id}?email=${userData?.email}`)
           .then((res) => {
             if (res.data.deletedCount) {
               setStateData();

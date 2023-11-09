@@ -33,7 +33,11 @@ const Create = () => {
       level,
       des,
       dueData: startDate,
-      adminEmail: userData?.email,
+      admin: {
+        email: userData?.email,
+        name: userData?.displayName,
+        profile: userData?.photoURL,
+      },
     };
     axiosSecure
       .post(`/assignment/new?email=${userData?.email}`, data)

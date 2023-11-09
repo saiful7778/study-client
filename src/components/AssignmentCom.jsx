@@ -1,21 +1,36 @@
 import PropTypes from "prop-types";
 import convertDate from "../utility/convertDate";
+import { Link } from "react-router-dom";
 
 const AssignmentCom = ({ itemData }) => {
-  const { _id, title, thumbnailUrl, des, level, mark, dueData } =
+  const { _id, title, thumbnailUrl, level, mark, dueData, admin } =
     itemData || {};
+
+  const { name, profile } = admin || {};
   return (
     <div className="flex flex-col overflow-hidden w-full border border-primary rounded-lg bg-white shadow-md">
-      <figure className="w-full h-72">
-        <img
-          className="w-full h-full object-cover object-center"
-          src={thumbnailUrl}
-          alt={`${title} image`}
-        />
-      </figure>
+      <div className="relative">
+        <figure className="w-full h-72">
+          <img
+            className="w-full h-full object-cover object-center"
+            src={thumbnailUrl}
+            alt={`${title} image`}
+          />
+        </figure>
+        {profile && (
+          <div className="absolute top-0 left-0 z-20">
+            <img
+              className="w-10 h-10 rounded-full m-2 ring-2 ring-primary ring-offset-2 object-cover object-center"
+              src={profile}
+              alt="admin profile"
+            />
+          </div>
+        )}
+      </div>
       <div className="p-4">
-        <h5 className="capitalize text-2xl font-semibold">{title}</h5>
-        <p className="my-1 text-sm text-gray-600 font-medium">{des}</p>
+        <h5 className="capitalize text-2xl font-semibold border-dashed border-b border-gray-400 mb-2 pb-2">
+          {title}
+        </h5>
         <div className="text-sm text-gray-600 font-medium leading-5">
           <div>
             Difficulty label:{" "}
@@ -28,11 +43,18 @@ const AssignmentCom = ({ itemData }) => {
             Due Data:{" "}
             <span className="capitalize font-bold">{convertDate(dueData)}</span>
           </div>
+          <div>
+            Admin: <span className="font-bold">{name}</span>
+          </div>
         </div>
         <div className="flex gap-1 mt-3 w-full">
-          <button className="btn btn-primary" type="button">
+          <Link
+            to={`/assignments/${_id}`}
+            className="btn btn-primary"
+            type="button"
+          >
             view details
-          </button>
+          </Link>
           <button className="btn btn-primary btn-outline" type="button">
             submit
           </button>

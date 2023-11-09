@@ -65,3 +65,7 @@
     @apply max-sm:hidden max-min-sm:block;
   }
 }
+
+.btn:focus {
+  @apply outline-dashed outline-2 outline-primary outline-offset-2;
+}
