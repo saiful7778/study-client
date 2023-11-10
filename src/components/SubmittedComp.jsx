@@ -1,29 +1,28 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import convertDate from "../utility/convertDate";
-import useAxiosSecure from "../hooks/useAxiosSecure";
-import useAuth from "../hooks/useAuth";
 import sweetAlert from "../config/SweetAlart.config";
 import showData from "../utility/showData";
 
 const SubmittedComp = ({ itemData }) => {
   const { thumbnailUrl, title, _id, mark, level, dueData, submission } =
     itemData || {};
-  const { userData } = useAuth();
-  const axiosSecure = useAxiosSecure();
   const handleSubmitted = () => {
-    axiosSecure
-      .get(
-        `/assignment/submit/${_id}?email=${userData?.email}&idtok=${userData?.uid}`
-      )
-      .then((res) => {
-        sweetAlert.fire({
-          html: showData(res.data),
-        });
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    sweetAlert.fire({
+      html: showData(submission.submittedData),
+    });
+    // axiosSecure
+    //   .get(
+    //     `/assignment/submit/${_id}?email=${userData?.email}&idtok=${userData?.uid}`
+    //   )
+    //   .then((res) => {
+    //     sweetAlert.fire({
+    //       html: showData(res.data),
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     console.error(err);
+    //   });
   };
   return (
     <div className="flex flex-col md:flex-row max-md:items-center gap-3 overflow-hidden w-full border border-primary rounded-lg bg-white shadow-md">
@@ -40,7 +39,7 @@ const SubmittedComp = ({ itemData }) => {
           <div>
             Status:{" "}
             <span className="capitalize font-bold text-secondary">
-              {submission[0].submittedData.status}
+              {submission.submittedData.status}
             </span>
           </div>
           <div>

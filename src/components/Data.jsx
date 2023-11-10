@@ -58,6 +58,7 @@ const Data = ({ itemData }) => {
         pdfLink: submittedData.pdfLink,
         status: submittedData.status,
         note: submittedData.note,
+        mark: submittedData.mark,
       }),
     });
   };
