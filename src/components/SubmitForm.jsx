@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useStateData from "../hooks/useStateData";
 import { RxCrossCircled } from "react-icons/rx";
-import { useAxios } from "../hooks/useAxiosSecure";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import sweetAlert from "../config/SweetAlart.config";
@@ -11,7 +11,7 @@ const SubmitForm = () => {
   const { handleShowModal, assignmentID } = useStateData();
   const { userData } = useAuth();
   const [spinner, setSpinner] = useState(false);
-  const axiosSecure = useAxios();
+  const axiosSecure = useAxiosSecure();
   const handleSubmit = (e) => {
     e.preventDefault();
     setSpinner(true);
@@ -25,10 +25,10 @@ const SubmitForm = () => {
     const pdfLink = form.pefLink.value;
     const note = form.note.value;
     const data = {
+      assignmentID,
       adminEmail: userData?.email,
       adminUid: userData?.uid,
-      submission: {
-        assignmentID,
+      submittedData: {
         pdfLink,
         note,
       },

@@ -1,6 +1,6 @@
 import AssignmentCom from "../../components/AssignmentCom";
 import { useState, useEffect } from "react";
-import { useAxios } from "../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { CiFilter } from "react-icons/ci";
 
 const Assignments = () => {
@@ -8,7 +8,7 @@ const Assignments = () => {
   const [serverData, setServerData] = useState([]);
   const [query, setQuery] = useState("");
   const [level, setLevel] = useState(defaultLevel);
-  const axiosSecure = useAxios();
+  const axiosSecure = useAxiosSecure();
   useEffect(() => {
     (async () => {
       const res = await axiosSecure.get(`/assignments${query}`);

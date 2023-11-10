@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
-import { useAxios } from "../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 import convertDate from "../../utility/convertDate";
 import useStateData from "../../hooks/useStateData";
 
@@ -9,7 +9,7 @@ const Preview = () => {
   const { handleShowModal, handleAssignmentId } = useStateData();
   const { userData } = useAuth();
   const { assignmentID } = useParams();
-  const axiosSecure = useAxios();
+  const axiosSecure = useAxiosSecure();
   const [errorStatus, setErrorStatus] = useState("");
   const [assignmentData, setAssignmentData] = useState({});
   useEffect(() => {

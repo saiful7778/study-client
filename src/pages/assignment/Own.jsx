@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
-import { useAxios } from "../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 import AssignmentItem from "../../components/AssignmentItem";
 
 const Own = () => {
   const { userData } = useAuth();
-  const axiosSecure = useAxios();
+  const axiosSecure = useAxiosSecure();
   const [serverData, setServerData] = useState([]);
   useEffect(() => {
     if (userData?.email) {

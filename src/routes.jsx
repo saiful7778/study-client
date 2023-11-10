@@ -63,7 +63,11 @@ const route = createBrowserRouter([
           },
           {
             path: "submit",
-            element: <Submit />,
+            element: (
+              <PrivateRoute>
+                <Submit />
+              </PrivateRoute>
+            ),
           },
         ],
       },

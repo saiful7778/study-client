@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useAxios } from "../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import FormComp from "../../components/FormComp";
@@ -7,7 +7,7 @@ import FormComp from "../../components/FormComp";
 const Update = () => {
   const { assignmentID } = useParams();
   const { userData } = useAuth();
-  const axiosSecure = useAxios();
+  const axiosSecure = useAxiosSecure();
   const [errorStatus, setErrorStatus] = useState("");
   const [assignmentData, setAssignmentData] = useState({});
   useEffect(() => {

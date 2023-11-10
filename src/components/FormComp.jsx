@@ -3,7 +3,7 @@ import { BsFillCalendarPlusFill } from "react-icons/bs";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
-import { useAxios } from "../hooks/useAxiosSecure";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +15,7 @@ const FormComp = ({ defData }) => {
   const { _id, thumbnailUrl, title, des, dueData, level, mark } = defData || {};
   const [startDate, setStartDate] = useState(null);
   const [spinner, setSpinner] = useState(false);
-  const axiosSecure = useAxios();
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     if (dueData) {

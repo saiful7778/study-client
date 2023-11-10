@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { BsTrash } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
-import { useAxios } from "../hooks/useAxiosSecure";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 import useAuth from "../hooks/useAuth";
 import convertDate from "../utility/convertDate";
 import { Link } from "react-router-dom";
@@ -10,7 +10,7 @@ import sweetAlert from "../config/SweetAlart.config";
 const AssignmentItem = ({ itemData, setStateData }) => {
   const { userData } = useAuth();
   const { _id, title, thumbnailUrl, level, mark, dueData } = itemData || {};
-  const axiosSecure = useAxios();
+  const axiosSecure = useAxiosSecure();
 
   const handleDelete = () => {
     sweetAlert
