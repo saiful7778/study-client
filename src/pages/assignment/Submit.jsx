@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import SubmittedComp from "../../components/SubmittedComp";
 
 const Submit = () => {
   const { userData } = useAuth();
@@ -30,8 +31,23 @@ const Submit = () => {
       </div>
     );
   } else {
-    const { submission } = submitedData || {};
-    const renderSubmission = submission?.map((ele) => console.log(ele));
+    const renderSubmission = submitedData?.map((ele) => (
+      <SubmittedComp key={ele._id} itemData={ele} />
+    ));
+
+    return (
+      <>
+        {submitedData?.length ? (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            {renderSubmission}
+          </div>
+        ) : (
+          <div className="text-center text-xl text-red-600 font-semibold my-10">
+            No data found!
+          </div>
+        )}
+      </>
+    );
   }
 };
 

@@ -26,8 +26,9 @@ const SubmitForm = () => {
     const note = form.note.value;
     const data = {
       assignmentID,
-      adminEmail: userData?.email,
-      adminUid: userData?.uid,
+      userEmail: userData?.email,
+      userUid: userData?.uid,
+      userProfile: userData?.photoURL,
       submittedData: {
         pdfLink,
         note,
