@@ -1,12 +1,18 @@
 import PropTypes from "prop-types";
 import convertDate from "../utility/convertDate";
 import { Link } from "react-router-dom";
+import useStateData from "../hooks/useStateData";
 
 const AssignmentCom = ({ itemData }) => {
+  const { handleShowModal, handleAssignmentId } = useStateData();
   const { _id, title, thumbnailUrl, level, mark, dueData, admin } =
     itemData || {};
 
   const { name, profile } = admin || {};
+  const handleSubmit = () => {
+    handleShowModal();
+    handleAssignmentId(_id);
+  };
   return (
     <div className="flex flex-col overflow-hidden w-full border border-primary rounded-lg bg-white shadow-md">
       <div className="relative">
@@ -51,8 +57,12 @@ const AssignmentCom = ({ itemData }) => {
           <Link to={`/assignments/${_id}`} className="btn btn-primary">
             view details
           </Link>
-          <button className="btn btn-primary btn-outline" type="button">
-            submit
+          <button
+            onClick={handleSubmit}
+            className="btn btn-primary btn-outline"
+            type="button"
+          >
+            take assignment
           </button>
         </div>
       </div>

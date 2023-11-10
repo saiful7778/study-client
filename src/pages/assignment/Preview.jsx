@@ -3,8 +3,10 @@ import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
 import { useAxios } from "../../hooks/useAxiosSecure";
 import convertDate from "../../utility/convertDate";
+import useStateData from "../../hooks/useStateData";
 
 const Preview = () => {
+  const { handleShowModal, handleAssignmentId } = useStateData();
   const { userData } = useAuth();
   const { assignmentID } = useParams();
   const axiosSecure = useAxios();
@@ -22,6 +24,11 @@ const Preview = () => {
     }
   }, [userData, assignmentID, axiosSecure]);
 
+  const handleSubmit = (id) => {
+    handleAssignmentId(id);
+    handleShowModal();
+  };
+
   if (errorStatus) {
     return (
       <div>
@@ -31,18 +38,20 @@ const Preview = () => {
       </div>
     );
   } else {
-    const { thumbnailUrl, title, des, dueData, level, mark, admin } =
+    const { _id, thumbnailUrl, title, des, dueData, level, mark, admin } =
       assignmentData || {};
     const { name, profile } = admin || {};
     return (
       <div className="flex md:flex-row flex-col gap-2">
         <div className="md:w-1/2 w-full">
-          <figure className="relative">
-            <img
-              className="object-cover object-center shadow-md rounded"
-              src={thumbnailUrl}
-              alt="thumbnail"
-            />
+          <div className="relative">
+            <figure className="h-80">
+              <img
+                className="object-cover h-full object-center shadow-md rounded"
+                src={thumbnailUrl}
+                alt="thumbnail"
+              />
+            </figure>
             <div className="absolute top-0 right-0 z-20 flex items-center m-2">
               <span className="bg-white rounded-sm px-1 text-sm font-medium shadow">
                 {name}
@@ -55,12 +64,13 @@ const Preview = () => {
                 />
               )}
             </div>
-          </figure>
+          </div>
           <button
+            onClick={() => handleSubmit(_id)}
             className="btn btn-primary btn-outline btn-block mt-4"
             type="button"
           >
-            submit
+            take assignment
           </button>
         </div>
         <div className="md:w-1/2 w-full">

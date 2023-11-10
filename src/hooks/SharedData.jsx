@@ -5,10 +5,19 @@ export const ContextData = createContext(null);
 
 const SharedData = ({ children }) => {
   const [showModal, setShowModal] = useState(false);
+  const [assignmentID, setAssignmentID] = useState("");
   const handleShowModal = () => {
     setShowModal((prop) => !prop);
   };
-  const allData = { showModal, handleShowModal };
+  const handleAssignmentId = (id) => {
+    setAssignmentID(id);
+  };
+  const allData = {
+    showModal,
+    handleShowModal,
+    assignmentID,
+    handleAssignmentId,
+  };
   return (
     <ContextData.Provider value={allData}>{children}</ContextData.Provider>
   );
