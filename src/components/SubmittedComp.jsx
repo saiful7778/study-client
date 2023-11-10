@@ -4,6 +4,7 @@ import convertDate from "../utility/convertDate";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import useAuth from "../hooks/useAuth";
 import sweetAlert from "../config/SweetAlart.config";
+import showData from "../utility/showData";
 
 const SubmittedComp = ({ itemData }) => {
   const { thumbnailUrl, title, _id, mark, level, dueData, submission } =
@@ -77,16 +78,6 @@ const SubmittedComp = ({ itemData }) => {
 
 SubmittedComp.propTypes = {
   itemData: PropTypes.object,
-};
-
-const showData = (inputData) => {
-  return `
-    <div class="text-left text-sm">
-      <div><span class="font-semibold">PDF link:</span> ${inputData.pdfLink}</div>
-      <div><span class="font-semibold">Status:</span> ${inputData.status}</div>
-      <p><span class="font-semibold">Note:</span> ${inputData.note}</p>
-    </div>
-  `;
 };
 
 export default SubmittedComp;

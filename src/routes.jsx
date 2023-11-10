@@ -11,6 +11,7 @@ import Own from "./pages/assignment/Own";
 import Update from "./pages/assignment/Update";
 import ErrorPage from "./pages/ErrorPage";
 import Submit from "./pages/assignment/Submit";
+import Submitted from "./pages/assignment/Submitted";
 
 const route = createBrowserRouter([
   {
@@ -66,6 +67,14 @@ const route = createBrowserRouter([
             element: (
               <PrivateRoute>
                 <Submit />
+              </PrivateRoute>
+            ),
+          },
+          {
+            path: "submitted",
+            element: (
+              <PrivateRoute>
+                <Submitted />
               </PrivateRoute>
             ),
           },

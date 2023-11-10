@@ -28,7 +28,7 @@ const Create = () => {
     const des = form.des.value;
     const data = {
       title,
-      mark,
+      mark: parseFloat(mark),
       thumbnailUrl,
       level,
       des,

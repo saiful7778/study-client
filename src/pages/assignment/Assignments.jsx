@@ -2,6 +2,7 @@ import AssignmentCom from "../../components/AssignmentCom";
 import { useState, useEffect } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { CiFilter } from "react-icons/ci";
+import Nodata from "../../components/Nodata";
 
 const Assignments = () => {
   const defaultLevel = "easy";
@@ -49,9 +50,7 @@ const Assignments = () => {
           {renderData}
         </div>
       ) : (
-        <div className="text-center text-xl text-red-600 font-semibold my-10">
-          No data found!
-        </div>
+        <Nodata />
       )}
     </>
   );

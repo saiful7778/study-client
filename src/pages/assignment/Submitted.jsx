@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import SubmittedComp from "../../components/SubmittedComp";
+import SubmittedItem from "../../components/SubmittedItem";
+import useStateData from "../../hooks/useStateData";
 import Nodata from "../../components/Nodata";
 
-const Submit = () => {
+const Submitted = () => {
+  const { reFatch } = useStateData();
   const { userData } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [errorStatus, setErrorStatus] = useState("");
@@ -12,16 +14,16 @@ const Submit = () => {
   useEffect(() => {
     if (userData?.email) {
       axiosSecure
-        .get(
-          `/assignment/submit?email=${userData?.email}&idtok=${userData?.uid}`
-        )
-        .then((res) => setSubmitedData(res.data))
+        .get(`/assignment/submitted?email=${userData?.email}`)
+        .then((res) => {
+          setSubmitedData(res.data);
+        })
         .catch((err) => {
           setErrorStatus(err);
           console.error(err);
         });
     }
-  }, [axiosSecure, userData]);
+  }, [axiosSecure, userData, reFatch]);
 
   if (errorStatus) {
     return (
@@ -33,9 +35,8 @@ const Submit = () => {
     );
   } else {
     const renderSubmission = submitedData?.map((ele) => (
-      <SubmittedComp key={ele._id} itemData={ele} />
+      <SubmittedItem key={ele._id} itemData={ele} />
     ));
-
     return (
       <>
         {submitedData?.length ? (
@@ -50,4 +51,4 @@ const Submit = () => {
   }
 };
 
-export default Submit;
+export default Submitted;

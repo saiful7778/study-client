@@ -22,8 +22,13 @@ const navLinks = [
       },
       {
         _id: "nvdp3",
-        navName: "submitted assignments",
+        navName: "my submission",
         path: "/assignments/submit",
+      },
+      {
+        _id: "nvdp4",
+        navName: "submitted assignment",
+        path: "/assignments/submitted",
       },
     ],
   },

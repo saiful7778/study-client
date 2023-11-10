@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import AssignmentItem from "../../components/AssignmentItem";
+import Nodata from "../../components/Nodata";
 
 const Own = () => {
   const { userData } = useAuth();
@@ -38,9 +39,7 @@ const Own = () => {
           {renderOwnItem}
         </div>
       ) : (
-        <div className="text-center text-xl text-red-600 font-semibold my-10">
-          No data found!
-        </div>
+        <Nodata />
       )}
     </>
   );

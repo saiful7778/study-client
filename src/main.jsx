@@ -7,11 +7,11 @@ import AuthContext from "./hooks/AuthContext";
 import SharedData from "./hooks/SharedData";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <AuthContext>
-      <SharedData>
-        <RouterProvider router={route} />
-      </SharedData>
-    </AuthContext>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <AuthContext>
+    <SharedData>
+      <RouterProvider router={route} />
+    </SharedData>
+  </AuthContext>
+  // </React.StrictMode>
 );
