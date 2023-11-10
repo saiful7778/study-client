@@ -28,6 +28,7 @@ const SubmitForm = () => {
       assignmentID,
       userEmail: userData?.email,
       userUid: userData?.uid,
+      userName: userData?.displayName,
       userProfile: userData?.photoURL,
       submittedData: {
         pdfLink,
@@ -37,7 +38,7 @@ const SubmitForm = () => {
     axiosSecure
       .post(`/assignment/submit?email=${userData?.email}`, data)
       .then((res) => {
-        if (res.data.success) {
+        if (res?.data?.success) {
           sweetAlert.fire({
             title: "Assignment submitted!",
             icon: "success",

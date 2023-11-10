@@ -1,10 +1,29 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import convertDate from "../utility/convertDate";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import useAuth from "../hooks/useAuth";
+import sweetAlert from "../config/SweetAlart.config";
 
 const SubmittedComp = ({ itemData }) => {
   const { thumbnailUrl, title, _id, mark, level, dueData, submission } =
     itemData || {};
+  const { userData } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  const handleSubmitted = () => {
+    axiosSecure
+      .get(
+        `/assignment/submit/${_id}?email=${userData?.email}&idtok=${userData?.uid}`
+      )
+      .then((res) => {
+        sweetAlert.fire({
+          html: showData(res.data),
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
   return (
     <div className="flex flex-col md:flex-row max-md:items-center gap-3 overflow-hidden w-full border border-primary rounded-lg bg-white shadow-md">
       <figure className="md:w-2/5 h-44">
@@ -44,6 +63,7 @@ const SubmittedComp = ({ itemData }) => {
             view details
           </Link>
           <button
+            onClick={handleSubmitted}
             className="btn btn-sm btn-outline btn-secondary"
             type="button"
           >
@@ -57,6 +77,16 @@ const SubmittedComp = ({ itemData }) => {
 
 SubmittedComp.propTypes = {
   itemData: PropTypes.object,
+};
+
+const showData = (inputData) => {
+  return `
+    <div class="text-left text-sm">
+      <div><span class="font-semibold">PDF link:</span> ${inputData.pdfLink}</div>
+      <div><span class="font-semibold">Status:</span> ${inputData.status}</div>
+      <p><span class="font-semibold">Note:</span> ${inputData.note}</p>
+    </div>
+  `;
 };
 
 export default SubmittedComp;

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import convertDate from "../../utility/convertDate";
 import useStateData from "../../hooks/useStateData";
+import SubmissionUser from "../../components/SubmissionUser";
 
 const Preview = () => {
   const { handleShowModal, handleAssignmentId } = useStateData();
@@ -38,9 +39,21 @@ const Preview = () => {
       </div>
     );
   } else {
-    const { _id, thumbnailUrl, title, des, dueData, level, mark, admin } =
-      assignmentData || {};
+    const {
+      _id,
+      thumbnailUrl,
+      title,
+      des,
+      dueData,
+      level,
+      mark,
+      admin,
+      submission,
+    } = assignmentData || {};
     const { name, profile } = admin || {};
+    const renderSubmissin = submission?.map((ele, idx) => (
+      <SubmissionUser key={"sba" + idx} itemData={ele} />
+    ));
     return (
       <div className="flex md:flex-row flex-col gap-2">
         <div className="md:w-1/2 w-full">
@@ -72,6 +85,14 @@ const Preview = () => {
           >
             take assignment
           </button>
+          {renderSubmissin && (
+            <div>
+              <div className="font-semibold mt-3">
+                Those who submitted this assignment
+              </div>
+              <div>{renderSubmissin}</div>
+            </div>
+          )}
         </div>
         <div className="md:w-1/2 w-full">
           <h2 className="capitalize text-2xl font-semibold">{title}</h2>
