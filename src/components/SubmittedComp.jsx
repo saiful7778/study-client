@@ -50,6 +50,14 @@ const SubmittedComp = ({ itemData }) => {
             Total marks: <span className="capitalize font-bold">{mark}</span>
           </div>
           <div>
+            My marks:{" "}
+            <span className="capitalize font-bold">
+              {submission.submittedData.mark
+                ? submission.submittedData.mark
+                : 0}
+            </span>
+          </div>
+          <div>
             Due Data:{" "}
             <span className="capitalize font-bold">{convertDate(dueData)}</span>
           </div>

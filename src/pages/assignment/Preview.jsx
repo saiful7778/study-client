@@ -57,10 +57,10 @@ const Preview = () => {
     return (
       <div className="flex md:flex-row flex-col gap-2">
         <div className="md:w-1/2 w-full">
-          <div className="relative">
-            <figure className="h-80">
+          <div className="relative w-full">
+            <figure className="h-80 w-full">
               <img
-                className="object-cover h-full object-center shadow-md rounded"
+                className="object-cover w-full h-full object-center shadow-md rounded"
                 src={thumbnailUrl}
                 alt="thumbnail"
               />

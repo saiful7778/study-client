@@ -36,6 +36,7 @@ const Assignments = () => {
 
   const handleFilter = () => {
     setQuery(`&level=${level}`);
+    setCurrentPage(0);
   };
 
   const handlePagination = (data) => {
